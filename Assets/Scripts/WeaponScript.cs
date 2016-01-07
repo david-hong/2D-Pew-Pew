@@ -6,7 +6,7 @@
 public class WeaponScript : MonoBehaviour
 {
 	public Transform shotPrefab;
-	public float shootingRate = 0.25f;
+	public float shootingRate = 0.01f;
 	private float shootCooldown;
 
 	void Start(){
@@ -27,7 +27,9 @@ public class WeaponScript : MonoBehaviour
 			var shotTransform = Instantiate(shotPrefab) as Transform;
 
 			// Assign position
-			shotTransform.position = transform.position;
+			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+			shotTransform.position = ray.origin;
 
 			// The is enemy property
 			ShotScript shot = shotTransform.gameObject.GetComponent<ShotScript>();
@@ -35,6 +37,7 @@ public class WeaponScript : MonoBehaviour
 				shot.isEnemyShot = isEnemy;
 			}
 
+			/*
 			MoveScript move = shotTransform.gameObject.GetComponent<MoveScript> ();
 
 			// Make the weapon shot always towards it
@@ -42,7 +45,7 @@ public class WeaponScript : MonoBehaviour
 				if (move != null) {
 					move.direction = this.transform.right; // towards in 2D space is the right of the sprite
 				}
-			}
+			}*/
 		}
 	}
 

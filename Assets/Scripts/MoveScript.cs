@@ -14,6 +14,15 @@ public class MoveScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (transform.position.y < - 40) {
+			this.Destroy(gameObject);
+		}
+		Vector3 playerPos = GameObject.Find("Player").transform.position;
+		if (playerPos.x < transform.position.x) {
+			direction.x = -1;
+		} else {
+			direction.x = 1;
+		}
 		movement = new Vector2 (speed.x * direction.x, speed.y * direction.y);
 	}
 

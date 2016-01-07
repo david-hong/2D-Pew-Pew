@@ -4,6 +4,7 @@ using System.Collections;
 public class HealthScript : MonoBehaviour {
 
 	public int hp = 1;
+	public int maxHp = 1;
 	public bool isEnemy = true;
 
 	public void Damage(int damageCount){
@@ -16,10 +17,13 @@ public class HealthScript : MonoBehaviour {
 				EnemyScript enemy = gameObject.GetComponent<EnemyScript> ();
 				if (enemy != null) {
 					enemy.dead ();
+					this.Destroy (gameObject);
 				}
 			}
-
-			this.Destroy (gameObject);
+			else{
+				PlayerScript player = gameObject.GetComponent<PlayerScript>();
+				player.dead();
+			}
 		}
 	}
 
@@ -37,7 +41,7 @@ public class HealthScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		hp = maxHp;
 	}
 	
 	// Update is called once per frame

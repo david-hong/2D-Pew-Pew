@@ -7,7 +7,7 @@ public class ShotScript : MonoBehaviour {
 	public bool isEnemyShot = false;
 
 	void Start () {
-		this.Destroy(gameObject, 5);
+		this.Destroy(gameObject, 0.2f);
 	}
 	
 	// Update is called once per frame

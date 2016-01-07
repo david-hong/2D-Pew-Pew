@@ -26,8 +26,16 @@ public class MenuScript : MonoBehaviour {
 			                  2 * Screen.height / 3 - buttonHeight / 2,
 			                  buttonWidth, buttonHeight);
 
+		Rect buttonRect2 = new Rect (Screen.width / 2 - buttonWidth / 2,
+		                            80 + 2 * Screen.height / 3 - buttonHeight / 2,
+		                            buttonWidth, buttonHeight);
+
 		if (GUI.Button (buttonRect, "Start!")) {
 			Application.LoadLevel ("stage1");
+		}
+
+		if (GUI.Button (buttonRect2, "Highscores")) {
+			Application.LoadLevel ("highScore");
 		}
 	}
 }

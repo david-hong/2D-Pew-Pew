@@ -6,6 +6,7 @@ public class SpecialEffectsHelper : MonoBehaviour {
 	public static SpecialEffectsHelper Instance;
 	public ParticleSystem smokeEffect;
 	public ParticleSystem fireEffect;
+	public Texture2D crosshairImage;
 
 	// Use this for initialization
 	void Start () {
@@ -37,5 +38,9 @@ public class SpecialEffectsHelper : MonoBehaviour {
 		Destroy (newParticleSystem.gameObject, newParticleSystem.startLifetime);
 
 		return newParticleSystem;
+	}
+
+	void OnGUI(){
+		Cursor.SetCursor (crosshairImage, new Vector2(16,16),CursorMode.Auto);
 	}
 }
