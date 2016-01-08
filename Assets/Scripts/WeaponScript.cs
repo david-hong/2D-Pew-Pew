@@ -29,7 +29,6 @@ public class WeaponScript : MonoBehaviour
 
 			// Assign position
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
 			shotTransform.position = ray.origin;
 
 			// The is enemy property

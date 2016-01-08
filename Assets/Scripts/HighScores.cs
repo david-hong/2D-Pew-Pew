@@ -37,12 +37,12 @@ public class HighScores : MonoBehaviour {
 	}
 
 	private string[] getScores(){
-		string[] file = new string[6];
+		string[] file = new string[9];
 		int i = 0;
 
 		StreamReader reader = new StreamReader ("Assets/Scripts/data/highScore");
 		string line = reader.ReadLine();
-		while(line != null && i < 6){
+		while(line != null && i < 9){
 			file[i] += line;
 			line = reader.ReadLine();
 			i++;

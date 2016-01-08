@@ -6,19 +6,21 @@ public class LevelScript : MonoBehaviour {
 	public Transform enemyPrefab;
 	public Transform ghostPrefab;
 	public Transform tankPrefab;
+
 	public float amount = 1;
 	public float spawnrate = 5;
 	private float cooldown = 4;
 	public float exponential = 1.5f;
 	public float maxIncrease = 1;
 	private bool spawnable;
+
 	public static LevelScript Instance;
 
 
 	// Use this for initialization
 	void Start () {
 		spawnable = true;
-		if (Instance == null) {
+		if (Instance != null) {
 			Debug.Log("Multiple instances of levelscript");
 		}
 		Instance = this;
@@ -75,7 +77,7 @@ public class LevelScript : MonoBehaviour {
 				enemy.position = new Vector3(posX,posY,0f);
 				enemy.GetComponent<MoveScript>().direction = new Vector2(1,0);
 			}
-			else if(enemyRNG <= 9){
+			else if(enemyRNG <= 8){
 				var enemy = Instantiate(tankPrefab) as Transform;
 			}
 			else{
@@ -83,6 +85,4 @@ public class LevelScript : MonoBehaviour {
 			}
 		}
 	}
-
-
 }

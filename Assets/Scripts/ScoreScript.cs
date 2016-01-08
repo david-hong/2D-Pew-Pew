@@ -9,8 +9,10 @@ public class ScoreScript : MonoBehaviour {
 	private int score;
 	private bool addable;
 
-	public int getScore(){
-		return score;
+	public int Score{
+		get {
+			return score;
+		}
 	}
 
 	public void addScore(int n){

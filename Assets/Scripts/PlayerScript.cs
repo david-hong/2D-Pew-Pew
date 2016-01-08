@@ -15,22 +15,29 @@ public class PlayerScript : MonoBehaviour {
 		jumping = false;
 		alive = true;
 	}
-
-	void OnDestroy(){
-	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (!alive)
 			return;
 
+		this.move ();
+		this.attack ();
+
+		if (jumping && this.onGround()) {
+			jumping = false;
+		}
+	}
+
+	private void move(){
 		float inputX = Input.GetAxis ("Horizontal");
-
 		movement = new Vector2 (speed.x * inputX, 0);
+	}
 
+	private void attack(){
 		bool shoot = Input.GetButtonDown("Fire1");
 		shoot |= Input.GetButtonDown("Fire2");
-
+		
 		if (shoot) {
 			WeaponScript weapon = GetComponent<WeaponScript> ();
 			if (weapon != null) {
@@ -38,10 +45,15 @@ public class PlayerScript : MonoBehaviour {
 				SoundEffectsHelper.Instance.MakePlayerShotSound ();
 			}
 		}
+	}
 
-		if (jumping && (transform.position.y + 8.9050 < 0.01f || transform.position.y + 5.655 < 0.01f || transform.position.y + 3.345 < 0.01f)) {
-			jumping = false;
-		}
+	private bool onGround(){
+		return (transform.position.y + 8.9050 < 0.01f || transform.position.y + 5.655 < 0.01f || transform.position.y + 3.345 < 0.01f);
+	}
+
+	private void jump(){
+		jumping = true;
+		rigidBodyComponent.AddForce(new Vector2(0 , 10000f), ForceMode2D.Force);
 	}
 
 	void FixedUpdate(){
@@ -54,8 +66,7 @@ public class PlayerScript : MonoBehaviour {
 
 		
 		if (Input.GetKeyDown ("space") && jumping == false) {
-			jumping = true;
-			rigidBodyComponent.AddForce(new Vector2(0 , 10000f), ForceMode2D.Force);
+			this.jump ();
 		}
 	}
 

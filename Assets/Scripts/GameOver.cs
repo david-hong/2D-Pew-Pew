@@ -57,17 +57,20 @@ public class GameOver : MonoBehaviour {
 		using (StreamReader reader = new StreamReader("Assets/Scripts/data/highScore")){
 			string line = reader.ReadLine();
 			bool written = false;
+			int currScore = ScoreScript.Instance.Score;
+
 			while(line != null){
 				string[] score = line.Split(null);
-				if(!written && ScoreScript.Instance.getScore() > int.Parse(score[0])){
-					file += ScoreScript.Instance.getScore () + " " + name + "\n";
+
+				if(!written && currScore > int.Parse(score[0])){
+					file += currScore + " " + name + "\n";
 					written = true;
 				}
 				file += line + "\n";
 				line = reader.ReadLine();
 			}
 			if(!written){
-				file += ScoreScript.Instance.getScore () + " " + name + "\n";
+				file += currScore + " " + name + "\n";
 			}
 		}
 		

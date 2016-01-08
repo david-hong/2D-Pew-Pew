@@ -15,10 +15,9 @@ public class PowerUp : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (ScoreScript.Instance.getScore () % nextBombIn < prev % nextBombIn) {
+		if (ScoreScript.Instance.Score > nextBombIn) {
 			bomb = Instantiate(bombPowerUp) as Transform;
-			nextBombIn += 10;
+			nextBombIn += nextBombIn + 10;
 		}
-		prev = ScoreScript.Instance.getScore ();
 	}
 }
