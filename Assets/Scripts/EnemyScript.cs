@@ -5,7 +5,7 @@ public class EnemyScript : MonoBehaviour{
 	private MoveScript moveScript;
 	private WeaponScript[] weapons;
 	public int points;
-	public Vector3 pos;
+	private Vector3 pos;
 	private GUIStyle style = null;
 
 	void Awake(){
@@ -30,6 +30,9 @@ public class EnemyScript : MonoBehaviour{
 			if (GetComponent<Renderer>().IsVisibleFrom(Camera.main)){
 				this.Spawn();
 			}
+		}
+		else if(this.transform.position.y < -20){
+			Destroy(gameObject);
 		}
 		else{
 			// Auto-fire

@@ -84,7 +84,7 @@ public class PlayerScript : MonoBehaviour {
 		GetComponent<Renderer> ().enabled = false;
 		GetComponent<Rigidbody2D> ().isKinematic = true;
 		GetComponent<BoxCollider2D> ().enabled = false;
-		
 		transform.parent.gameObject.AddComponent<GameOver> ();
+		LevelScript.Instance.dead ();
 	}
 }

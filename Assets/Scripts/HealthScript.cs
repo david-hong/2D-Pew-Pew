@@ -34,8 +34,12 @@ public class HealthScript : MonoBehaviour {
 				this.Damage (shot.damage);
 
 				//destroy shot
-				this.Destroy(shot.gameObject);
+				if (!shot.isBomb)
+					this.Destroy (shot.gameObject);
 			}
+		} else if(otherCollider.gameObject.transform.name.Contains("Bomb PowerUp")){
+			GetComponent<WeaponScript>().PowerUp();
+			Destroy(otherCollider.gameObject);
 		}
 	}
 

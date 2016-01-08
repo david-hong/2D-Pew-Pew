@@ -6,6 +6,7 @@
 public class WeaponScript : MonoBehaviour
 {
 	public Transform shotPrefab;
+	public Transform bomb;
 	public float shootingRate = 0.01f;
 	private float shootCooldown;
 
@@ -47,6 +48,10 @@ public class WeaponScript : MonoBehaviour
 				}
 			}*/
 		}
+	}
+
+	public void PowerUp(){
+		var shotTransform = Instantiate(bomb) as Transform;
 	}
 
 	public bool CanAttack{

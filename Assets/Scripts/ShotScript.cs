@@ -5,6 +5,7 @@ public class ShotScript : MonoBehaviour {
 
 	public int damage = 1;
 	public bool isEnemyShot = false;
+	public bool isBomb = false;
 
 	void Start () {
 		this.Destroy(gameObject, 0.2f);
@@ -12,8 +13,5 @@ public class ShotScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (this.GetComponent<Renderer> ().IsVisibleFrom (Camera.main) == false) {
-			//this.Destroy (gameObject);
-		}
 	}
 }
