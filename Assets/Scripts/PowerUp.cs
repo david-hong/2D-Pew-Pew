@@ -7,6 +7,7 @@ public class PowerUp : MonoBehaviour {
 	private Transform bomb;
 	private int prev = 0;
 	private int nextBombIn = 20;
+	private const int powerupIncrementer = 10;
 
 	// Use this for initialization
 	void Start () {
@@ -17,7 +18,7 @@ public class PowerUp : MonoBehaviour {
 	void Update () {
 		if (ScoreScript.Instance.Score > nextBombIn) {
 			bomb = Instantiate(bombPowerUp) as Transform;
-			nextBombIn += nextBombIn + 10;
+			nextBombIn += nextBombIn + powerupIncrementer;
 		}
 	}
 }

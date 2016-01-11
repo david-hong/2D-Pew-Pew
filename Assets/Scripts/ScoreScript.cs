@@ -45,6 +45,6 @@ public class ScoreScript : MonoBehaviour {
 
 	void OnGUI(){
 		GUI.skin = skin;
-		GUI.Label(new Rect(10,10, 200, 30), "SCORE "+score);
+		GUI.Label(new Rect(10,10, 200, 30), "SCORE " + score);
 	}
 }
